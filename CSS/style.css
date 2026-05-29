@@ -1,155 +1,312 @@
-/* --- VARIABLES Y BASES --- */
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL
+   ========================================================================== */
 :root {
-    --cinema-dark: #0B0B0F;
-    --cinema-card: #15151e;
-    --cinema-magenta: #D4007F;
-    --cinema-magenta-accent: #E6008A;
-    --cinema-turquoise: #1EB8C3;
-    --cinema-orange: #FF8C42;
-    --cinema-light: #EDEDED;
-    --cinema-soft: #F8E9F5;
+    --magenta-base: #D4007F;
+    --magenta-bright: #F50096;
+    --dark-pure: #000000;
+    --dark-bg: #0A0A0F;
+    --dark-card: #14141F;
+    --orange-alert: #FF7A00;
+    /* ¡Profe nota!: Agregué esta variable que estabas usando pero no existía */
+    --transition-smooth: all 0.3s ease; 
 }
-
-/* --- CLASES DE UTILIDAD (Tus bases) --- */
-.bg-cinema-dark { background-color: var(--cinema-dark) !important; }
-.bg-cinema-card { background-color: var(--cinema-card) !important; }
-.bg-cinema-magenta { background-color: var(--cinema-magenta) !important; }
-.bg-cinema-soft { background-color: var(--cinema-soft) !important; }
-
-.bg-gradient-cinema {
-    background: linear-gradient(135deg, #D4007F 0%, #A4006F 100%) !important;
-}
-.bg-gradient-hero {
-    background: linear-gradient(135deg, #D4007F 0%, #1A2A6C 60%, #1EB8C3 100%) !important;
-}
-
-.text-cinema-magenta { color: var(--cinema-magenta) !important; }
-.text-cinema-accent { color: var(--cinema-magenta-accent) !important; }
-.text-cinema-turquoise { color: var(--cinema-turquoise) !important; }
-.text-cinema-orange { color: var(--cinema-orange) !important; }
-.text-cinema-light { color: var(--cinema-light) !important; }
-
-/* --- ESTILOS DE COMPONENTES --- */
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--cinema-dark);
-    color: var(--cinema-light);
-    scroll-behavior: smooth;
+    background-color: var(--dark-bg);
+    color: #FFFFFF;
+    overflow-x: hidden;
 }
 
-/* Logo con efecto neón magenta */
-.brand-logo {
-    font-size: 3.5rem;
+/* ==========================================================================
+   2. HEADER Y NAVEGACIÓN
+   ========================================================================== */
+.logo-header-zone {
+    background: linear-gradient(135deg, #D4007F 0%, #7A0048 100%);
+    padding: 20px 0;
+    position: relative;
+}
+
+.brand-logo-main {
+    font-size: 2.3rem;
     font-weight: 800;
-    color: var(--cinema-magenta);
+    color: #FFFFFF !important;
     text-decoration: none;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    letter-spacing: -1px;
-    display: block;
-    padding: 2rem 0;
-    text-shadow: 0 0 15px rgba(212, 0, 127, 0.4);
-    transition: all 0.3s ease;
 }
 
-.brand-logo:hover {
-    color: var(--cinema-turquoise);
-    text-shadow: 0 0 20px rgba(30, 184, 195, 0.6);
+.custom-nav-dark {
+    background-color: var(--dark-pure) !important;
+    border-bottom: 2px solid rgba(212, 0, 127, 0.25);
 }
 
-/* Navegación */
-.navbar {
-    background-color: rgba(11, 11, 15, 0.95) !important;
-    border-bottom: 1px solid rgba(212, 0, 127, 0.2);
-}
-
-.nav-link {
-    color: var(--cinema-light) !important;
+.custom-nav-dark .nav-link {
+    color: #E0E0E0 !important;
     font-weight: 600;
-    text-transform: uppercase;
     font-size: 0.85rem;
-    margin: 0 15px;
-    transition: 0.3s;
+    padding: 14px 18px !important;
+    transition: var(--transition-smooth);
 }
 
-.nav-link:hover {
-    color: var(--cinema-turquoise) !important;
+.custom-nav-dark .nav-link:hover, 
+.custom-nav-dark .nav-link.active {
+    color: var(--magenta-bright) !important;
+    background-color: rgba(255, 255, 255, 0.03);
 }
 
-/* Nuevo Hero con degradado */
-.carousel-item {
-    height: 75vh;
+/* ==========================================================================
+   ESTILO DE REDES SOCIALES (CON EFECTO GLOW NARANJA)
+   ========================================================================== */
+.header-social-side {
+    gap: 20px;
+    display: flex;
+    align-items: center;
 }
 
-.carousel-item::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to bottom, transparent 0%, var(--cinema-dark) 95%);
+.social-link {
+    color: #FFFFFF !important;
+    font-size: 1.4rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: inline-block;
 }
 
-.carousel-caption {
-    z-index: 10;
-    bottom: 25%;
+.social-link:hover {
+    color: #FF8C42 !important;
+    transform: translateY(-4px) scale(1.1);
+    /* Efecto Glow Naranja */
+    text-shadow: 0 0 8px #FF8C42, 
+                 0 0 15px rgba(255, 140, 66, 0.6), 
+                 0 0 25px rgba(255, 140, 66, 0.4); 
 }
 
-.carousel-caption h1 {
+.social-link:active {
+    transform: scale(0.95);
+}
+
+/* ==========================================================================
+   3. SECCIÓN CARTELERA (EL CORAZÓN DEL DISEÑO)
+   ========================================================================== */
+#cartelera .row {
+    display: flex;
+    align-items: stretch;
+}
+
+.section-title {
     font-weight: 800;
-    color: white;
-}
-
-/* Botón estilo Cinema Magenta */
-.btn-cinema {
-    background: linear-gradient(135deg, #D4007F 0%, #A4006F 100%);
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    font-weight: 700;
-    border-radius: 5px;
+    font-size: 1.8rem;
+    border-left: 5px solid var(--magenta-base);
+    padding-left: 15px;
     text-transform: uppercase;
-    transition: 0.3s;
 }
 
-.btn-cinema:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(212, 0, 127, 0.5);
-    color: white;
-}
-
-/* Cartas de Película */
-.movie-card {
-    background-color: var(--cinema-card);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
+/* PÓSTER PRINCIPAL (IZQUIERDA) */
+.main-feature-card {
+    height: 100%;
+    min-height: 600px;
+    position: relative;
     overflow: hidden;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.main-poster-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+/* PÓSTERS SECUNDARIOS (DERECHA) */
+.movie-card {
+    background-color: var(--dark-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    height: 100%;
 }
 
 .movie-card:hover {
-    transform: translateY(-12px);
-    border-color: var(--cinema-magenta);
+    transform: translateY(-10px);
+    border-color: var(--magenta-base);
+    z-index: 10;
 }
 
-.status-badge {
+.movie-poster-img {
+    height: 380px;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.feature-info-overlay {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    background: var(--cinema-magenta);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 20px;
+    background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+}
+
+.card-title-bg {
+    background-color: var(--dark-pure);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   4. COMPONENTES (BADGES, BOTONES, INPUTS)
+   ========================================================================== */
+.status-badge-outside {
+    position: absolute;
+    top: -12px;
+    left: 10px;
+    z-index: 100;
+    background-color: var(--magenta-base);
     color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-weight: 700;
+    padding: 4px 12px;
     font-size: 0.7rem;
-    z-index: 5;
-}
-
-/* Títulos de sección */
-.section-title {
     font-weight: 800;
-    color: var(--cinema-light);
-    border-left: 5px solid var(--cinema-turquoise);
-    padding-left: 15px;
-    margin-bottom: 40px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Footer y Red
+.bg-magenta { background-color: var(--magenta-base); }
+.badge-orange { background-color: var(--orange-alert); }
+
+/* ¡Profe nota!: Unifiqué los dos estilos de botón que tenías en uno solo coherente */
+.btn-magenta-action {
+    background: linear-gradient(135deg, #D4007F 0%, #A4006F 100%);
+    color: white;
+    font-weight: 700;
+    padding: 12px 25px;
+    border: 0;
+    border-radius: 4px; /* Un toque sutil de redondez */
+    transition: var(--transition-smooth);
+}
+
+.btn-magenta-action:hover {
+    transform: scale(1.05);
+    color: white;
+    box-shadow: 0 0 20px rgba(212, 0, 127, 0.4);
+}
+
+.input-custom {
+    background-color: var(--dark-bg) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #FFFFFF !important;
+}
+
+/* Textos del Carrusel */
+.custom-shadow-text {
+    color: #FFFFFF !important;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.85), 
+                 -1px -1px 0px rgba(0, 0, 0, 0.5), 
+                 1px -1px 0px rgba(0, 0, 0, 0.5);
+}
+
+/* ¡Profe nota!: Fusioné las dos declaraciones duplicadas de .custom-caption-overlay */
+.custom-caption-overlay {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100%;
+    padding: 80px 8% 40px 8% !important;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0) 100%);
+    text-align: left;
+}
+
+/* ==========================================================================
+   5. SECCIÓN CONFITERÍA
+   ========================================================================== */
+.combo-card {
+    background-color: var(--dark-card);
+    border: 2px solid #2A2A35;
+    border-radius: 0;
+    height: 100%;
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+}
+
+.combo-card:hover {
+    border-color: var(--magenta-base);
+    background-color: #1A1A26;
+}
+
+.combo-img-container {
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.combo-img {
+    width: 210px;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #2A2A35;
+    padding: 0;
+    transition: var(--transition-smooth);
+}
+
+.combo-card:hover .combo-img {
+    border-color: var(--magenta-bright);
+    transform: scale(1.08);
+}
+
+.combo-card h4 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 800;
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+.text-magenta {
+    color: var(--magenta-bright);
+}
+
+/* ==========================================================================
+   6. RESPONSIVE (AJUSTES MÓVIL)
+   ========================================================================== */
+@media (max-width: 991px) {
+    #cartelera .row {
+        flex-direction: column;
+    }
+    .main-feature-card {
+        min-height: 400px;
+        margin-bottom: 20px;
+    }
+    .movie-poster-img {
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Ajustes móviles fusionados y limpios */
+    .custom-caption-overlay {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: 100%;
+        padding: 20px 15px !important;
+        background: #0F0F16 !important;
+        text-align: center !important;
+    }
+    
+    .custom-caption-overlay h1 {
+        font-size: 1.5rem !important;
+        margin-bottom: 4px;
+    }
+    
+    .custom-caption-overlay p {
+        font-size: 0.85rem !important;
+        line-height: 1.2;
+    }
+}
+

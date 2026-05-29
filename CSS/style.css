@@ -1,0 +1,155 @@
+/* --- VARIABLES Y BASES --- */
+:root {
+    --cinema-dark: #0B0B0F;
+    --cinema-card: #15151e;
+    --cinema-magenta: #D4007F;
+    --cinema-magenta-accent: #E6008A;
+    --cinema-turquoise: #1EB8C3;
+    --cinema-orange: #FF8C42;
+    --cinema-light: #EDEDED;
+    --cinema-soft: #F8E9F5;
+}
+
+/* --- CLASES DE UTILIDAD (Tus bases) --- */
+.bg-cinema-dark { background-color: var(--cinema-dark) !important; }
+.bg-cinema-card { background-color: var(--cinema-card) !important; }
+.bg-cinema-magenta { background-color: var(--cinema-magenta) !important; }
+.bg-cinema-soft { background-color: var(--cinema-soft) !important; }
+
+.bg-gradient-cinema {
+    background: linear-gradient(135deg, #D4007F 0%, #A4006F 100%) !important;
+}
+.bg-gradient-hero {
+    background: linear-gradient(135deg, #D4007F 0%, #1A2A6C 60%, #1EB8C3 100%) !important;
+}
+
+.text-cinema-magenta { color: var(--cinema-magenta) !important; }
+.text-cinema-accent { color: var(--cinema-magenta-accent) !important; }
+.text-cinema-turquoise { color: var(--cinema-turquoise) !important; }
+.text-cinema-orange { color: var(--cinema-orange) !important; }
+.text-cinema-light { color: var(--cinema-light) !important; }
+
+/* --- ESTILOS DE COMPONENTES --- */
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--cinema-dark);
+    color: var(--cinema-light);
+    scroll-behavior: smooth;
+}
+
+/* Logo con efecto neón magenta */
+.brand-logo {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--cinema-magenta);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    display: block;
+    padding: 2rem 0;
+    text-shadow: 0 0 15px rgba(212, 0, 127, 0.4);
+    transition: all 0.3s ease;
+}
+
+.brand-logo:hover {
+    color: var(--cinema-turquoise);
+    text-shadow: 0 0 20px rgba(30, 184, 195, 0.6);
+}
+
+/* Navegación */
+.navbar {
+    background-color: rgba(11, 11, 15, 0.95) !important;
+    border-bottom: 1px solid rgba(212, 0, 127, 0.2);
+}
+
+.nav-link {
+    color: var(--cinema-light) !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin: 0 15px;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--cinema-turquoise) !important;
+}
+
+/* Nuevo Hero con degradado */
+.carousel-item {
+    height: 75vh;
+}
+
+.carousel-item::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, transparent 0%, var(--cinema-dark) 95%);
+}
+
+.carousel-caption {
+    z-index: 10;
+    bottom: 25%;
+}
+
+.carousel-caption h1 {
+    font-weight: 800;
+    color: white;
+}
+
+/* Botón estilo Cinema Magenta */
+.btn-cinema {
+    background: linear-gradient(135deg, #D4007F 0%, #A4006F 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-weight: 700;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-cinema:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(212, 0, 127, 0.5);
+    color: white;
+}
+
+/* Cartas de Película */
+.movie-card {
+    background-color: var(--cinema-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.movie-card:hover {
+    transform: translateY(-12px);
+    border-color: var(--cinema-magenta);
+}
+
+.status-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--cinema-magenta);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.7rem;
+    z-index: 5;
+}
+
+/* Títulos de sección */
+.section-title {
+    font-weight: 800;
+    color: var(--cinema-light);
+    border-left: 5px solid var(--cinema-turquoise);
+    padding-left: 15px;
+    margin-bottom: 40px;
+}
+
+/* Footer y Red

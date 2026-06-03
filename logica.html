@@ -269,38 +269,39 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        document.getElementById('formLogica').addEventListener('submit', function(event) {
-            // Evita que la página se recargue al enviar el formulario
-            event.preventDefault();
+<script>
+    document.getElementById('formLogica').addEventListener('submit', function(event) {
+        // Evita que la página se recargue y rompa la simulación
+        event.preventDefault();
+        
+        // Captura los valores de los inputs y limpia espacios en blanco con .trim()
+        const usuario = document.getElementById('inputUsuario').value.trim();
+        const contrasena = document.getElementById('inputPassword').value;
+        const contenedorAlerta = document.getElementById('contenedorAlerta');
+        
+        // CONDICIONAL EVALUADO: Ambos campos deben ser exactamente iguales a los credenciales correctos
+        if (usuario === "cesde" && contrasena === "123") {
+            // Caso de Éxito: Credenciales correctas
+            contenedorAlerta.innerHTML = `
+                <div class="alert alert-success border-0 d-flex align-items-center" role="alert">
+                    <i class="bi bi-check-circle-fill me-2 fs-5"></i>
+                    <div><strong>¡Bienvenidos!</strong> Autenticación exitosa. Hola de nuevo, <strong>${usuario}</strong>.</div>
+                </div>
+            `;
             
-            // Captura los valores de los inputs
-            const usuario = document.getElementById('inputUsuario').value.trim();
-            const contrasena = document.getElementById('inputPassword').value;
-            const contenedorAlerta = document.getElementById('contenedorAlerta');
+            // Limpia los campos del formulario para un nuevo intento posterior
+            document.getElementById('formLogica').reset();
             
-            // Validación: Si la contraseña es "0000" niega el acceso, si es cualquier otra cosa da la bienvenida
-            if (contrasena === "0000") {
-                contenedorAlerta.innerHTML = `
-                    <div class="alert alert-danger border-0 d-flex align-items-center" role="alert">
-                        <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
-                        <div><strong>Error de acceso:</strong> La contraseña 0000 no está permitida en el sistema.</div>
-                    </div>
-                `;
-            } else {
-                contenedorAlerta.innerHTML = `
-                    <div class="alert alert-success border-0 d-flex align-items-center" role="alert">
-                        <i class="bi bi-check-circle-fill me-2 fs-5"></i>
-                        <div><strong>¡Bienvenidos!</strong> Autenticación exitosa. Hola de nuevo, <strong>${usuario}</strong>.</div>
-                    </div>
-                `;
-                
-                // Opcional: Limpia los campos del formulario después de un login exitoso
-                document.getElementById('formLogica').reset();
-            }
-        });
-    </script>
+        } else {
+            // Caso de Error: Si el usuario NO es "cesde" O la contraseña NO es "123"
+            contenedorAlerta.innerHTML = `
+                <div class="alert alert-danger border-0 d-flex align-items-center" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
+                    <div><strong>Error de acceso:</strong> Usuario o contraseña incorrectos. Inténtalo de nuevo.</div>
+                </div>
+            `;
+        }
+    });
+</script>
 </body>
 </html>
